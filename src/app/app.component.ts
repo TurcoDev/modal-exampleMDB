@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from './components/modal/modal.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'modal-exampleMDB';
+  modalRef: MdbModalRef<ModalComponent> | null = null;
+
+  constructor(private modalService: MdbModalService) {}
+
+  openModal() {
+    this.modalRef = this.modalService.open(ModalComponent)
+  }
+
 }
